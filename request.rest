@@ -1,0 +1,32 @@
+
+### Add a new post
+POST http://localhost:3000/post/
+Content-Type: application/json
+
+{
+  "message": "This is Art post.",
+  "sender": "987"
+}
+###
+### Get all posts
+GET http://localhost:3000/post/
+###
+
+### Get a post by id
+GET http://localhost:3000/post/673a15cb5c1f38117915432f
+###
+
+### Get posts by sender
+GET http://localhost:3000/post/sender/987
+###
+
+### Update a post by id
+PUT http://localhost:3000/post/673a15cb5c1f38117915432f
+Content-Type: application/json
+
+{
+  "message": "This is a food post.",
+  "sender": "123456"
+}
+###
+

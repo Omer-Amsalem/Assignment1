@@ -1,6 +1,10 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
+import dotenv from 'dotenv';
+import express from 'express';
+import mongoose from 'mongoose';
+import postRoute from './routes/postRoute.js';
+
+dotenv.config();
+
 
 // Initialize Express
 const app = express();
@@ -15,7 +19,7 @@ mongoose
   .catch((err) => console.error('MongoDB connection failed:', err));
 
 // Routes
-//app.use('/api/items', require('./routes/items'));
+app.use('/post', postRoute);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
