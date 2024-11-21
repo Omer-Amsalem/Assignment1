@@ -1,5 +1,5 @@
-
-### Add a new post
+//-------- POST API'S-------
+### Create a new post
 POST http://localhost:3000/post/
 Content-Type: application/json
 
@@ -30,3 +30,37 @@ Content-Type: application/json
 }
 ###
 
+//-------- COMMENT API'S-------
+### Create comment
+POST http://localhost:3000/comment/
+Content-Type: application/json
+
+{
+  "message": "Sounds great",
+  "sender": "1234",
+  "post": "673a12dc4c23bab6e22b6ab2"
+}
+###
+
+### Get all comments
+GET http://localhost:3000/comment/
+###
+
+### Get comment by ID
+GET http://localhost:3000/comment/673f5189959990f0269d484e
+###
+
+### Get comment by post ID
+GET http://localhost:3000/comment/postID/673a12dc4c23bab6e22b6ab2
+###
+
+### Update comment
+PUT  http://localhost:3000/comment/673f4e3fe508b535e1cd3d18
+Content-Type: application/json
+
+{
+  "message": "Sounds awesome",
+  "sender": "1234",
+  "post": "673a12dc4c23bab6e22b6ab2"
+}
+###
