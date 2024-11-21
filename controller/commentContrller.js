@@ -39,20 +39,16 @@ const getComments = asyncRest(async (req, res) => {
     });
   });
 
-  const getCommentsByPostID = asyncRest(async (req, res) =>{
-    const commentsByPostID = await Comment.find({post:req.params.post});
-    if(!commentsByPostID){
-        res.status(404);
-        throw new Error("Comments not found.");
-    }
+const getCommentsByPost = asyncRest(async (req, res) => {
+    const comments = await Comment.find({ post: req.params.post});
     res.json({
-        success: true,
-        comments: commentsByPostID,
-      });
+      success: true,
+      comments: comments,
+    });
   });
 
   const updateComment = asyncRest(async (req, res) => {
-    const comment = await Comment.findById(req.body.id);
+    const comment = await Comment.findById(req.params.id);
     if (!comment) {
       res.status(404);
       throw new Error("Comment not found.");
@@ -61,14 +57,29 @@ const getComments = asyncRest(async (req, res) => {
     comment.message = req.body.message || comment.message;
     comment.sender = req.body.sender || comment.sender;
 
-    const updateComment = await comment.save();
+    const updatedComment = await comment.save();
 
     res.json({
       success: true,
-       updateComment,
+      comment: updatedComment,
+    });
+  });
+
+  const deleteComment = asyncRest(async (req, res) => {
+    const comment = await Comment.findByIdAndDelete(req.params.id);
+  
+    if (!comment) {
+      res.status(404);
+      throw new Error("Comment not found.");
+    }
+    res.json({
+      success: true,
+      message: "Comment removed.",
     });
   });
   
 
+  
 
-export {createComment, getComments, getCommentById, getCommentsByPostID, updateComment};
+
+export {createComment, getComments, getCommentById, getCommentsByPost, updateComment, deleteComment};
