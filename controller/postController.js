@@ -42,7 +42,7 @@ const getPostsBySender = asyncRest(async (req, res) => {
   const posts = await Post.find({ sender: req.params.sender });
   res.json({
     success: true,
-    posts,
+    posts: posts,
   });
 });
 
