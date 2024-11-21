@@ -36,7 +36,7 @@ POST http://localhost:3000/comment/
 Content-Type: application/json
 
 {
-  "message": "Sounds great",
+  "message": "Test great",
   "sender": "1234",
   "post": "673a12dc4c23bab6e22b6ab2"
 }
@@ -51,16 +51,18 @@ GET http://localhost:3000/comment/673f5189959990f0269d484e
 ###
 
 ### Get comment by post ID
-GET http://localhost:3000/comment/postID/673a12dc4c23bab6e22b6ab2
+GET http://localhost:3000/comment/post/673a12dc4c23bab6e22b6ab2
 ###
 
 ### Update comment
-PUT  http://localhost:3000/comment/673f4e3fe508b535e1cd3d18
+PUT  http://localhost:3000/comment/673f5189959990f0269d484e
 Content-Type: application/json
 
 {
   "message": "Sounds awesome",
-  "sender": "1234",
-  "post": "673a12dc4c23bab6e22b6ab2"
+  "sender": "1234"
 }
+###
+### Delete comment
+DELETE http://localhost:3000/comment/673f85aabe1a37447fdc7d1a
 ###
